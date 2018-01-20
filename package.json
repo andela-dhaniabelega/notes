@@ -39,6 +39,8 @@
     "popper.js": "^1.12.9",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "redux": "^3.7.0",
+    "redux-thunk": "^2.2.0",
     "sequelize": "^4.1.0",
     "sequelize-cli": "^2.7.0",
     "validator": "^7.1.0",
