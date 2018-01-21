@@ -1,8 +1,7 @@
 import { combineReducers } from 'redux';
 import users from './reducers/users';
-import documents from './reducers/documents';
+// import notes from './reducers/notes';
 
 export default combineReducers({
-	users,
-	documents
+	users
 });

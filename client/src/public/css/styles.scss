@@ -1,0 +1,106 @@
+*, body{
+	margin: 0;
+	padding: 0;
+}
+.sign-up-error {
+	color: red;
+}
+
+.toolbar{
+	border-bottom: 1px solid #f0f0f0;
+	border-top: 1px solid rgba(194, 194, 214, 0.5);
+	height: 50px;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 1px;
+}
+
+.sidebar{
+	border-right: 1px solid #f0f0f0;
+	width: 360px;
+	position: absolute;
+	bottom: 0;
+	top: 0;
+	left: 0;
+}
+
+.icons {
+	margin: 2px 0 0 310px;
+	list-style-type: none;
+	display: inline-flex;
+	cursor: pointer;
+}
+
+.toolbar li {
+	margin-top: 13px;
+}
+
+.trash{
+	margin-left: 40px;
+}
+
+.create {
+	cursor: pointer;
+}
+
+.heading {
+	position: absolute;
+	font-family: 'Titillium Web', sans-serif;
+	top: 13px;
+	left: 105px;
+}
+
+.navigation {
+	position: absolute;
+	right: 55px;
+	top: 13px;
+	cursor: pointer;
+}
+
+
+.settings {
+	position: absolute;
+	width: 450px;
+	left: 0;
+	right: 0;
+	top: 120px;
+	margin: 0 auto;
+}
+
+.title {
+	color: #999999;
+	float: left;
+	margin-bottom: 35px;
+}
+
+.subheading {
+	border-bottom: 1px solid #e0e2e4;
+  border-bottom-color: rgba(0, 0, 0, 0.1);
+  width: 100%;
+  overflow: hidden;
+  margin: 0px 0 5px;
+  color: #999999;
+}
+.left {
+	float: left;
+	clear: left;
+	font-family: 'Jaldi', sans-serif;
+}
+
+.right {
+	float: right;
+	clear: right;
+	text-align: right;
+	font-family: 'Titillium Web', sans-serif;
+}
+
+.right a {
+	text-transform: uppercase;
+}
+
+.desc {
+	color: #999999;
+	width: 100%;
+	margin-bottom: 50px;
+}

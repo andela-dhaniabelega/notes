@@ -1,11 +1,7 @@
-// import jwt from 'jsonwebtoken';
-// import bcrypt from 'bcrypt';
-// import validateInput from '../helpers/signUpValidation';
-
-const jwt = require('jsonwebtoken')
-const bcrypt = require('bcrypt')
-const validateInput = require('../helpers/signUpValidation')
-const validateUpdateInput = require('../helpers/editProfileValidation')
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
+import validateInput from '../helpers/signUpValidation';
+import validateUpdateInput from '../helpers/editProfileValidation';
 
 require('dotenv').config();
 const User = require('../models').User;
@@ -68,7 +64,7 @@ const UserController = {
 		if (!isValid) {
 			return res.status(400).json(errors);
 		}
-		User.findOne({ where: { email: req.body.email } })
+		User.findOne({ where: { email: req.body.userEmail } })
 			.then((user) => {
 				if (!user) {
 					if (req.body.roleId === 1 || req.body.roleId > 2) {
@@ -77,8 +73,8 @@ const UserController = {
 					User.create({
 						firstName: req.body.firstName,
 						lastName: req.body.lastName,
-						email: req.body.email,
-						password: req.body.password,
+						email: req.body.userEmail,
+						password: req.body.userPassword,
 						roleId: req.body.roleId || defaultRole
 					}).then((newuser) => {
 						const token = jwt.sign(
@@ -90,7 +86,8 @@ const UserController = {
 								roleId: newuser.dataValues.roleId
 							},
 							process.env.SECRET_KEY,
-							{ expiresIn: '23h' });
+							{ expiresIn: '23h' }
+						);
 						res.send(200, {
 							token,
 							message: 'User Created Successfully'
