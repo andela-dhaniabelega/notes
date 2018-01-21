@@ -2,8 +2,20 @@
 	margin: 0;
 	padding: 0;
 }
+a:not([href]):not([tabindex]) {
+	color: #007bff;
+}
 .sign-up-error {
 	color: red;
+}
+
+.container {
+	width: 800px;
+	position: absolute;
+	display: flex;
+	left: 0;
+	right: 0;
+	margin: 0 auto;
 }
 
 .toolbar{
@@ -14,6 +26,7 @@
 	top: 0;
 	right: 0;
 	left: 1px;
+	z-index: 2;
 }
 
 .sidebar{
@@ -23,6 +36,7 @@
 	bottom: 0;
 	top: 0;
 	left: 0;
+	z-index: 1;
 }
 
 .icons {
@@ -31,13 +45,19 @@
 	display: inline-flex;
 	cursor: pointer;
 }
-
+.link {
+	color: #007bff;
+}
 .toolbar li {
 	margin-top: 13px;
 }
 
 .trash{
 	margin-left: 40px;
+}
+
+.save{
+	margin-left: 20px;
 }
 
 .create {
@@ -103,4 +123,85 @@
 	color: #999999;
 	width: 100%;
 	margin-bottom: 50px;
+}
+
+.go_back{
+	margin-top: 28px;
+	position: absolute;
+	color: #999999;
+	font-family: 'Jaldi', sans-serif;
+}
+.go_back a {
+	color: unset;
+}
+
+.back_text {
+	margin-left: 7px;
+	margin-top: 26px;
+}
+
+.notes-preview-container {
+	position: absolute;
+  left: 0px;
+  bottom: 0px;
+  right: 0;
+  top: 51px;
+  overflow: auto;
+  height: auto;
+  padding-top: 0px;
+}
+
+.notes-preview-container li {
+	padding: 12px 10px 12px 25px;
+  text-shadow: white 0 1px 0;
+  cursor: pointer;
+}
+
+.notes-preview-container li.selected {
+	background: #eef3f8 linear-gradient(#eef3f8, #eef3f8);
+	text-shadow: none;
+	border-bottom: 1px solid ghostwhite;
+}
+
+.content {
+	width: 100%;
+	height: 100%;
+	border: none;
+}
+.notes {
+	position: absolute;
+  right: 0px;
+  left: 378px;
+  bottom: 0px;
+  top: 71px;
+  padding-top: 4px;
+  padding-bottom: 0px;
+  line-height: 1.4em;
+  font-family: 'Quando', sans-serif;
+	font-size: 14px;
+}
+
+textarea {
+    -webkit-appearance: textarea;
+    -webkit-rtl-ordering: logical;
+    flex-direction: column;
+    cursor: text;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    display: block;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    outline: none;
+}
+
+.notes-preview-title {
+	white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  color: #333;
+  padding: 0 0 0 1px;
+  width: 270px;
+  font-family: 'Quando', sans-serif;
 }

@@ -1,6 +1,6 @@
 // import Auth from '../middleware/authentication';
 
-const Auth = require('../middleware/authentication')
+const Auth = require('../middleware/authentication');
 const Note = require('../models').Note;
 const Role = require('../models').Role;
 
@@ -20,6 +20,7 @@ const NoteController = {
 			userId: req.decoded.id,
 			userRoleId: req.decoded.roleId,
 		};
+		console.log(req.body, 'the body')
 		Note.create(note)
 			.then((createdNote) => {
 				res.status(200).send({
@@ -27,7 +28,8 @@ const NoteController = {
 					message: 'Note Created Successfully'
 				});
 			})
-			.catch(() => {
+			.catch((err) => {
+				console.log(err, 'the err')
 				res.status(400).send({
 					message: 'Could not create note. Pls try later'
 				});
@@ -46,7 +48,7 @@ const NoteController = {
 		Note.findById(noteId)
 			.then((foundNote) => {
 				if (foundNote) {
-					if (userId === foundNote.userId || Auth.isAdmin(userRole)){
+					if (userId === foundNote.userId || Auth.isAdmin(userRole)) {
 						res.status(200).send({
 							foundNote,
 						});

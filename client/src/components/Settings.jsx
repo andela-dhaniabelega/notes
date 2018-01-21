@@ -10,7 +10,26 @@ export class Settings extends React.Component {
 
 	render() {
 		return(
-			<div className="settings_wrap">
+			<div>
+				<div className="toolbar">
+					<div className="navigation">
+						<div className="dropdown">
+							<a
+								className="dropdown-toggle"
+								id="dropdownMenu2"
+								data-toggle="dropdown"
+								aria-haspopup="true"
+								aria-expanded="false"
+							>
+								Celestine Okoro
+							</a>
+							<div className="dropdown-menu" aria-labelledby="dropdownMenu2">
+								<a href="/mynotes" className="dropdown-item" type="button">My Notes</a>
+								<a href="/settings" className="dropdown-item" type="button">Log Out</a>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div className="settings">
 					<h1 className="title">Settings</h1>
 
@@ -93,6 +112,11 @@ export class Settings extends React.Component {
 						</div>
 					</div>
 
+					<div className="go_back">
+						<h3>
+							<span className="back_text"><a href="/mynotes">Back to notes</a></span>
+						</h3>
+					</div>
 				</div>
 			</div>
 		);

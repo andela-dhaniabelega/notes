@@ -11,11 +11,9 @@ const Home = () => ({
 		return (
 			<div>
 				<h1>The Home Page</h1>
-				<div>
-					<SignUpForm signUp={this.props.signUp} />
-				</div>
-				<div>
-					<SignInForm signIn={this.props.signIn} />
+				<div className="container">
+					<div className="col col-sm-2"><SignUpForm signUp={this.props.signUp} /></div>
+					<div className="col col-sm-2"><SignInForm signIn={this.props.signIn} /></div>
 				</div>
 			</div>
 		);
