@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import propTypes from 'prop-types';
 import { userNotes } from '../actions/userNotes';
 import { newNote } from '../actions/newNote';
+import { editNote } from '../actions/editNote';
+import { deleteNote } from '../actions/deleteNote';
 import NoteCard from './NoteCard';
 
 /**
@@ -22,10 +24,13 @@ export class MyNotes extends React.Component {
 		this.state = {
 			content: '',
 			offset: 0,
-			id: this.props.user.user.id
+			id: this.props.user.user.id,
+			editId: 0,
+			deleteId: 0
 		};
 		this.saveNote = this.saveNote.bind(this);
 		this.onChange = this.onChange.bind(this);
+		this.handleSingleNote = this.handleSingleNote.bind(this);
 	}
 
 	/**
@@ -56,17 +61,32 @@ export class MyNotes extends React.Component {
 	onChange(e) {
 		this.setState({ content: e.target.value });
 	}
+	handleSingleNote(param) {
+		this.setState({
+			content: param.content,
+			editId: param.id,
+			deleteId: param.id
+		});
+	}
 	/**
 	 * Open Editor for a new note
 	 */
 	saveNote() {
-		console.log('here');
-		this.props.newNote(this.state).then(() => {
+		if (this.state.editId !== 0) {
+			this.props.editNote(this.state).then(() => {
+				this.props.userNotes(this.state);
+				this.setState({ editId: 0 });
+			}).catch((err) => {
+				console.log(err);
+			});
+		} else {
+			this.props.newNote(this.state).then(() => {
 			this.props.userNotes(this.state);
 			console.log('New Note Created');
-		}).catch((err) => {
-			console.log(err);
-		});
+			}).catch((err) => {
+				console.log(err);
+			});
+		}
 	}
 
 	render() {
@@ -122,12 +142,14 @@ export class MyNotes extends React.Component {
 									&& (this.state.notes.length === 0)
 							? emptyNotes : (
 								this.props.notes.map(note => (
-									<NoteCard
-										limit={this.state.limit}
-										offset={this.state.offset}
-										note={note}
-										key={note.id}
-									/>
+									<a role="button" className="note-card" onClick={() => this.handleSingleNote(note)}>
+										<li className="notes-preview selected">
+											<div className="notes-preview-title">
+												{note.content}
+											</div>
+											<p className="notes-preview-content">&nbsp;</p>
+										</li>
+									</a>
 								))
 							)}
 					</ul>
@@ -141,8 +163,8 @@ export class MyNotes extends React.Component {
 						rows="10"
 						className="content"
 						onChange={this.onChange}
+						value={this.state.content}
 					>
-						{this.state.content}
 					</textarea>
 				</div>
 			</div>
@@ -169,7 +191,8 @@ function mapStateToProps(state) {
 	return {
 		user: state.users,
 		notes: state.notes.notes,
+		note: state.notes.note,
 		pagination: state.notes.pagination
 	};
 }
-export default withRouter(connect(mapStateToProps, { userNotes, newNote })(MyNotes));
+export default withRouter(connect(mapStateToProps, { userNotes, newNote, editNote, deleteNote })(MyNotes));

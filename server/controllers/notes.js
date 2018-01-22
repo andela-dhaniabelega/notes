@@ -20,7 +20,7 @@ const NoteController = {
 			userId: req.decoded.id,
 			userRoleId: req.decoded.roleId,
 		};
-		console.log(req.body, 'the body')
+		console.log(req.body, 'the body');
 		Note.create(note)
 			.then((createdNote) => {
 				res.status(200).send({
@@ -29,7 +29,7 @@ const NoteController = {
 				});
 			})
 			.catch((err) => {
-				console.log(err, 'the err')
+				console.log(err, 'the err');
 				res.status(400).send({
 					message: 'Could not create note. Pls try later'
 				});

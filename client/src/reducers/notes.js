@@ -1,5 +1,5 @@
 import { CREATE_NEW_NOTE,
-	GET_USER_NOTES } from '../actions/actionTypes';
+	GET_USER_NOTES, EDIT_NOTE, DELETE_NOTE } from '../actions/actionTypes';
 
 const initialState = {
 	notes: [],
@@ -19,6 +19,15 @@ export default (state = initialState, action) => {
 			state,
 			{ notes: action.notes, pagination: action.pagination }
 		);
+	case EDIT_NOTE: {
+		return Object.assign({}, state, { note: action.note });
+	}
+	case DELETE_NOTE: {
+		const { notes = [] } = state;
+		const filteredDocuments = notes.filter(document =>
+			document.id !== action.documentId);
+		return Object.assign({}, state, { notes: filteredDocuments });
+	}
 	default: return state;
 	}
 };

@@ -10,7 +10,7 @@ export const setNewNote = (note) => {
 
 
 /**
- * @param  {object} payload
+ * @param  {object} content
  * @return {function} dispatch
  */
 export const newNote = (content) => {

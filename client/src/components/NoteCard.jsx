@@ -12,10 +12,12 @@ export class NewNote extends React.Component {
 	render() {
 		return (
 			<div>
-				<li className="notes-preview selected">
-					<div className="notes-preview-title">{this.props.note.content}</div>
-					<p className="notes-preview-content">&nbsp;</p>
-				</li>
+				<a className="note-card">
+					<li className="notes-preview selected">
+						<div className="notes-preview-title">{this.props.note.content}</div>
+						<p className="notes-preview-content">&nbsp;</p>
+					</li>
+				</a>
 			</div>
 		);
 	}
