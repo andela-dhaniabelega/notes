@@ -6,7 +6,6 @@ import { userNotes } from '../actions/userNotes';
 import { newNote } from '../actions/newNote';
 import { editNote } from '../actions/editNote';
 import { deleteNote } from '../actions/deleteNote';
-import NoteCard from './NoteCard';
 
 /**
  * @class MyNotes
@@ -31,6 +30,7 @@ export class MyNotes extends React.Component {
 		this.saveNote = this.saveNote.bind(this);
 		this.onChange = this.onChange.bind(this);
 		this.handleSingleNote = this.handleSingleNote.bind(this);
+		this.deleteNote = this.deleteNote.bind(this);
 	}
 
 	/**
@@ -88,7 +88,27 @@ export class MyNotes extends React.Component {
 			});
 		}
 	}
-
+	/**
+	 * Delete a Note
+	 * @return {void}
+	 */
+	deleteNote() {
+		if (this.state.deleteId !== 0) {
+			this.props.deleteNote(this.state.deleteId).then(() => {
+				this.setState({
+					deleteId: 0,
+					content: ''
+				});
+				console.log('Note Edited');
+			}).catch((err) => {
+				console.log(err);
+			});
+		}
+	}
+	/**
+	 * Render to DOM
+	 * @returns {void}
+	 */
 	render() {
 		const emptyNotes = (
 			<li className="notes-preview">
@@ -106,7 +126,7 @@ export class MyNotes extends React.Component {
 							</a>
 						</li>
 						<li className="trash">
-							<a role="button">
+							<a role="button" onClick={this.deleteNote}>
 								<i className="fa fa-trash-o fa-lg" aria-hidden="true" />
 							</a>
 						</li>

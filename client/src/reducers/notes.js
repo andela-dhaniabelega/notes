@@ -24,9 +24,9 @@ export default (state = initialState, action) => {
 	}
 	case DELETE_NOTE: {
 		const { notes = [] } = state;
-		const filteredDocuments = notes.filter(document =>
-			document.id !== action.documentId);
-		return Object.assign({}, state, { notes: filteredDocuments });
+		const filteredNotes = notes.filter(note =>
+			note.id !== action.noteId);
+		return Object.assign({}, state, { notes: filteredNotes });
 	}
 	default: return state;
 	}

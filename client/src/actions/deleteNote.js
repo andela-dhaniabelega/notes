@@ -14,7 +14,7 @@ export const setRemoveNote = (noteId) => {
  */
 export const deleteNote = (noteId) => {
 	return dispatch => {
-		return axios.delete(`/api/v1/documents/${noteId}`).then((res) => {
+		return axios.delete(`/api/v1/notes/${noteId}`).then((res) => {
 			dispatch(setRemoveNote(noteId));
 			return Promise.resolve(res);
 		});
