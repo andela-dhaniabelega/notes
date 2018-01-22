@@ -2,6 +2,8 @@
 	margin: 0;
 	padding: 0;
 }
+ html, body {margin:0;padding:0;height:100%;}
+
 a:not([href]):not([tabindex]) {
 	color: #007bff;
 }
@@ -9,6 +11,39 @@ a:not([href]):not([tabindex]) {
 	color: red;
 }
 
+#main-c {
+	background: #FC5C7D;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #6A82FB, #FC5C7D);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #6A82FB, #FC5C7D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  height: 1000px;
+}
+
+.jumbotron {
+	background-color: unset !important;
+	margin-left: 51px;
+}
+.card {
+	width: 600px;
+	border: unset;
+	background: transparent;
+}
+.card-block {
+	padding: 15px !important;
+}
+.signup{
+	position: absolute;
+	right: 580px;
+}
+.signin {
+	position: absolute;
+	left: 480px;
+}
+.home-border{
+	border-right: 1px solid rgba(0,0,0,.1) !important;
+	height: 400px;
+	position: absolute;
+	left: 351px;
+}
 .container {
 	width: 800px;
 	position: absolute;
@@ -204,4 +239,57 @@ textarea {
   padding: 0 0 0 1px;
   width: 270px;
   font-family: 'Quando', sans-serif;
+}
+
+.rotator {
+  position: relative;
+  width: 80%;
+  list-style: none;
+  padding: 0;
+}
+
+.sub-title {
+	margin-top: 70px;
+}
+
+.rotator > li {
+  position: absolute;
+  opacity: 0;
+  margin: 0 auto;
+  width: 100%;
+  top: -12px;
+}
+
+.rotator > li:first-child {
+  -webkit-animation: loop 10s infinite;
+}
+
+.rotator > li:nth-child(2) {
+  -webkit-animation: opsecond 10s infinite;
+}
+
+.rotator > li:last-child {
+  -webkit-animation: oplast 10s infinite;
+}
+
+@-webkit-keyframes loop {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  33% { opacity: 1; } 
+  44% { opacity: 0; }
+}
+
+@-webkit-keyframes opsecond {
+  33% { opacity: 0; }
+  44% { opacity: 1; }
+  66% { opacity: 1; }
+  77% { opacity: 0; }
+}
+  
+@-webkit-keyframes oplast {
+  66% { opacity: 0; }
+  77% { opacity: 1; }
+  100% { opacity: 1; }
+  0% { opacity: 1; }
+  10% { opacity: 0; }
 }

@@ -73,7 +73,6 @@ export class SignInForm extends React.Component {
 		}
 		return (
 			<div>
-				<h1>Sign In Form</h1>
 				<div className="form-group">
 					<label htmlFor="email">Email</label>
 					<input
@@ -94,7 +93,7 @@ export class SignInForm extends React.Component {
 						name="password"
 						className="form-control"
 						id="password"
-						placeholder="Another input"
+						placeholder="Password"
 						value={this.state.password}
 						onChange={this.onChange}
 					/>

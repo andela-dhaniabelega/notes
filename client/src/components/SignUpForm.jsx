@@ -77,7 +77,6 @@ export class SignUpForm extends React.Component {
 
 		return (
 			<div>
-				<h1>Sign Up</h1>
 				<div className="form-group">
 					<label htmlFor="firstName">First Name</label>
 					<input

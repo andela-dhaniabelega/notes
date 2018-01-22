@@ -6,6 +6,7 @@ import { userNotes } from '../actions/userNotes';
 import { newNote } from '../actions/newNote';
 import { editNote } from '../actions/editNote';
 import { deleteNote } from '../actions/deleteNote';
+import { signOut } from '../actions/signOut';
 
 /**
  * @class MyNotes
@@ -31,6 +32,7 @@ export class MyNotes extends React.Component {
 		this.onChange = this.onChange.bind(this);
 		this.handleSingleNote = this.handleSingleNote.bind(this);
 		this.deleteNote = this.deleteNote.bind(this);
+		this.signOut = this.signOut.bind(this);
 	}
 
 	/**
@@ -62,7 +64,7 @@ export class MyNotes extends React.Component {
 		this.setState({ content: e.target.value });
 	}
 	createNote() {
-		this.textAreaInput.focus();
+		document.getElementById("txtarea").focus();
 	}
 	handleSingleNote(param) {
 		this.setState({
@@ -109,6 +111,16 @@ export class MyNotes extends React.Component {
 		}
 	}
 	/**
+	 * @description Logs user out of the app
+	 * @param  {object} e
+	 * @return {void}
+	 */
+	signOut(e) {
+		e.preventDefault();
+		this.props.signOut();
+		this.props.history.push('/');
+	}
+	/**
 	 * Render to DOM
 	 * @returns {void}
 	 */
@@ -118,6 +130,8 @@ export class MyNotes extends React.Component {
 				<div className="notes-preview-title">No Notes</div>
 			</li>
 		);
+		const session = this.props.user.user;
+		const fullname = session.firstName + ' ' + session.lastName;
 		return (
 			<div>
 				<div className="toolbar">
@@ -149,11 +163,11 @@ export class MyNotes extends React.Component {
 								aria-haspopup="true"
 								aria-expanded="false"
 							>
-								Celestine Okoro
+								{fullname}
 							</a>
 							<div className="dropdown-menu" aria-labelledby="dropdownMenu2">
 								<a href="/settings" className="dropdown-item" type="button">Settings</a>
-								<a href="/settings" className="dropdown-item" type="button">Log Out</a>
+								<a role="button" className="dropdown-item" type="button" onClick={this.signOut}>Log Out</a>
 							</div>
 						</div>
 					</div>
@@ -180,7 +194,7 @@ export class MyNotes extends React.Component {
 
 				<div className="notes">
 					<textarea
-						name=""
+						name="txtarea"
 						id="txtarea"
 						cols="30"
 						rows="10"
@@ -219,4 +233,4 @@ function mapStateToProps(state) {
 		pagination: state.notes.pagination
 	};
 }
-export default withRouter(connect(mapStateToProps, { userNotes, newNote, editNote, deleteNote })(MyNotes));
+export default withRouter(connect(mapStateToProps, { userNotes, newNote, editNote, deleteNote, signOut })(MyNotes));
