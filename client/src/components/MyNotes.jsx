@@ -61,6 +61,9 @@ export class MyNotes extends React.Component {
 	onChange(e) {
 		this.setState({ content: e.target.value });
 	}
+	createNote() {
+		this.textAreaInput.focus();
+	}
 	handleSingleNote(param) {
 		this.setState({
 			content: param.content,
@@ -181,6 +184,7 @@ export class MyNotes extends React.Component {
 						id="txtarea"
 						cols="30"
 						rows="10"
+						ref={(textarea) => { this.textAreaInput = textarea; }}
 						className="content"
 						onChange={this.onChange}
 						value={this.state.content}
